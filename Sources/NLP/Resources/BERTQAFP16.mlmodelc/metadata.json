@@ -1,0 +1,95 @@
+[
+  {
+    "shortDescription" : "Find the answer to a given question within a given document. The model was fine-tuned to question-answering using the project https:\/\/github.com\/huggingface\/pytorch-pretrained-BERT and is based on the pre-trained BERT model variant 'bert-base-uncased' (https:\/\/github.com\/google-research\/bert).",
+    "metadataOutputVersion" : "3.0",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Double",
+        "formattedType" : "MultiArray (Double 384)",
+        "shortDescription" : "Start token scores of size 384. The argmax is the start index of the predicted answer in the input sequence",
+        "shape" : "[384]",
+        "name" : "startLogits",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Double",
+        "formattedType" : "MultiArray (Double 384)",
+        "shortDescription" : "End token scores of size 384. The argmax is the end index of the predicted answer in the input sequence",
+        "shape" : "[384]",
+        "name" : "endLogits",
+        "type" : "MultiArray"
+      }
+    ],
+    "version" : "",
+    "modelParameters" : [
+
+    ],
+    "author" : "BERT Paper: Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova",
+    "specificationVersion" : 4,
+    "license" : "Please see https:\/\/github.com\/google-research\/bert for license information for the pre-trained BERT model, and https:\/\/rajpurkar.github.io\/SQuAD-explorer\/ for license information for the Question-Answering dataset, and https:\/\/github.com\/huggingface\/pytorch-pretrained-BERT for Question-Answering task model fine-tuning license information.",
+    "isUpdatable" : "0",
+    "availability" : {
+      "macOS" : "10.15",
+      "tvOS" : "13.0",
+      "watchOS" : "6.0",
+      "iOS" : "13.0",
+      "macCatalyst" : "13.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_neuralNetwork"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Int32",
+        "formattedType" : "MultiArray (Int32 384)",
+        "shortDescription" : "Sequence of input symbols. The sequence starts with a start token (101) followed by question tokens that are followed be a separator token (102) and the document tokens.The document tokens end with a separator token (102) and the sequenceis padded with 0 values to length 384.",
+        "shape" : "[384]",
+        "name" : "wordIDs",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Int32",
+        "formattedType" : "MultiArray (Int32 384)",
+        "shortDescription" : "Sequence of token-types. Values of 0 for the start token, question tokens and the question separator. Value 1 for the document tokens and the end separator. The sequence is padded with 0 values to length 384.",
+        "shape" : "[384]",
+        "name" : "wordTypes",
+        "type" : "MultiArray"
+      }
+    ],
+    "userDefinedMetadata" : {
+      "com.apple.developer.machine-learning.models.version" : "1.2",
+      "com.apple.developer.machine-learning.models.name" : "BERTSQUADFP16.mlmodel",
+      "com.apple.developer.machine-learning.models.category" : "text"
+    },
+    "generatedClassName" : "BERTQAFP16",
+    "neuralNetworkLayerTypeHistogram" : {
+      "Bias" : 1,
+      "Mvn" : 25,
+      "InnerProduct" : 74,
+      "SoftmaxND" : 12,
+      "Clip" : 1,
+      "Gelu" : 12,
+      "Scale" : 26,
+      "ReshapeStatic" : 4,
+      "LoadConstantND" : 1,
+      "Transpose" : 52,
+      "RankPreservingReshape" : 48,
+      "Squeeze" : 36,
+      "Add" : 37,
+      "BroadcastToStatic" : 1,
+      "Embedding" : 3,
+      "ExpandDims" : 16,
+      "Multiply" : 12,
+      "BatchedMatmul" : 24
+    },
+    "method" : "predict"
+  }
+]
